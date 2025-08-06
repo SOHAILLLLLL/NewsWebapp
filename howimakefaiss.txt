@@ -1,0 +1,24 @@
+
+# run_once_to_create_index.py
+import os
+from langchain_google_genai import GoogleGenerativeAIEmbeddings
+from langchain_community.vectorstores import FAISS
+
+# Set your API key
+os.environ["GOOGLE_API_KEY"] = ""
+
+# Your texts
+chunk_texts = ["LangChain is a framework for developing applications powered by language models.",
+               "FAISS is a library for efficient similarity search.",
+               "Gemini is a family of multimodal models by Google.",
+               "Django is a high-level Python web framework."]
+
+# Use Google's embedding model
+embeddings = GoogleGenerativeAIEmbeddings(model="models/embedding-001")
+local_folder = "faiss_gemini_index" # Use a new folder
+
+# Create and save the vector store
+vectorstore = FAISS.from_texts(texts=chunk_texts, embedding=embeddings)
+vectorstore.save_local(local_folder)
+
+print(f"Vector store saved to '{local_folder}'. Place this folder in your Django project root.")

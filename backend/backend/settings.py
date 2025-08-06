@@ -1,3 +1,4 @@
+import os
 """
 Django settings for backend project.
 
@@ -11,6 +12,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
 from pathlib import Path
+# from dotenv import load_dotenv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -41,7 +43,8 @@ INSTALLED_APPS = [
     'djoser',
     'corsheaders',
     'rest_framework.authtoken',
-
+    'qa_app',
+    'news_api',
 ]
 
 MIDDLEWARE = [
@@ -158,5 +161,6 @@ STATIC_URL = 'static/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
-
+os.environ["GOOGLE_API_KEY"] = "AIzaSyDKHuhYjgJNXFdHNoYmzJQZkSB5433HEBk"
+GOOGLE_API_KEY = "AIzaSyDKHuhYjgJNXFdHNoYmzJQZkSB5433HEBk"
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

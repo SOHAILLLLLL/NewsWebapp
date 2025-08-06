@@ -1,0 +1,2 @@
+curl https://example.com/api/data
+curl -Method POST -Uri http://127.0.0.1:8000/chatbot/query/ -Headers @{"Content-Type"="application/json"} -Body '{"question": "what is wheather report on punjab?"}'

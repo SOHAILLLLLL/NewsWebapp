@@ -20,10 +20,6 @@ from django.urls import include
 from .views import ChatbotView
 urlpatterns = [
     path('admin/', admin.site.urls),
-    # path('api/', include('user_auth.urls')),  # Include the API URLs
-    # path('api/auth/', include('djoser.urls')),          # Djoser user management
-    path('api/auth/', include('djoser.urls')),          # Djoser user management
-    path('api/auth/', include('djoser.urls.authtoken')), # Djoser token endpoints
-    # path('api/',include('api.urls')),
-    path('chatbot/', ChatbotView.as_view(), name='chatbot-endpoint'),
+    path('chatbot/', include('qa_app.urls')), # Include your app's URLs
+    path('api/', include('news_api.urls')),
 ]
