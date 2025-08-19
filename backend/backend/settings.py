@@ -161,6 +161,6 @@ STATIC_URL = 'static/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
-os.environ["GOOGLE_API_KEY"] = "AIzaSyDKHuhYjgJNXFdHNoYmzJQZkSB5433HEBk"
-GOOGLE_API_KEY = "AIzaSyDKHuhYjgJNXFdHNoYmzJQZkSB5433HEBk"
+os.environ["GOOGLE_API_KEY"] = "AIzaSyAf7AuDb5mcQgzvYBZz2MRXwFr2424Yhlw"
+GOOGLE_API_KEY = "AIzaSyAf7AuDb5mcQgzvYBZz2MRXwFr2424Yhlw"
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

@@ -206,10 +206,15 @@ class ArticleTypeListView(APIView):
         """
         Return a paginated list of articles filtered by their type.
         """
+        print(article_type)
+        print(article_type)
+        print(article_type)
+        print(article_type)
         # Filter articles by the type provided in the URL (case-insensitive)
         queryset = Article.objects.filter(article_type__iexact=article_type).order_by('-id')
 
         if not queryset.exists():
+
             return Response(
                 {"detail": f"No articles found for type '{article_type}'."},
                 status=status.HTTP_404_NOT_FOUND
@@ -218,8 +223,27 @@ class ArticleTypeListView(APIView):
         # Paginate the queryset
         page = self.paginator.paginate_queryset(queryset, request, view=self)
         if page is not None:
+            print('lalalalala')
             serializer = ArticleSerializer(page, many=True)
+            print(serializer.data)
             return self.paginator.get_paginated_response(serializer.data)
 
         serializer = ArticleSerializer(queryset, many=True)
+        
         return Response(serializer.data)
+
+class ArticleDetailView(APIView):
+    """
+    API view to retrieve a single article by its ID.
+    Example URL: /api/news/1/
+    """
+    def get(self, request, article_id, format=None):
+        try:
+            article = Article.objects.get(id=article_id)
+            serializer = ArticleSerializer(article)
+            return Response(serializer.data, status=status.HTTP_200_OK)
+        except Article.DoesNotExist:
+            return Response(
+                {"detail": f"Article with ID {article_id} not found."},
+                status=status.HTTP_404_NOT_FOUND
+            )

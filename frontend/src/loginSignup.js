@@ -61,6 +61,7 @@ const Auth = () => {
     const handleSignup = async (username, email, password, re_password) => {
         setMessage(''); // Clear previous messages
         try {
+            console.log(password, re_password);
           if (password !== re_password) {
             setMessage('Passwords do not match. Please try again.');
             return;
@@ -69,7 +70,7 @@ const Auth = () => {
             setMessage('All fields are required. Please fill them out.');
             return;
           }
-            const response = await fetch(`${API_BASE_URL}/auth/users/`, {
+            const response = await fetch(`http://localhost:8000/api/auth/users/`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
